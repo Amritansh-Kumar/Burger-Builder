@@ -13,11 +13,15 @@ const controls = [
 interface BurgerControlsProps {
     addIngredient: Function,
     removeIngredient: Function,
+    disabledInfo: Object,
+    price: Number,
+    purchasable: boolean
 }
 
 const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
     return (
         <div className={classes.BuildControls}>
+            <p>CurrentPrice: <strong>{props.price.toFixed(2)}</strong></p>
             {controls.map(ctrl =>
                 <BuildControl
                     key={ctrl.label}
@@ -25,8 +29,15 @@ const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
                     type={ctrl.type}
                     addMore={() => props.addIngredient(ctrl.type)}
                     remove={() => props.removeIngredient(ctrl.type)}
+                    disabled={props.disabledInfo[ctrl.type]}
                 />
             )}
+            <button
+                className={classes.OrderButton}
+                disabled={!props.purchasable}
+            >
+                ORDER NOW
+            </button>
         </div>
     )
 };
