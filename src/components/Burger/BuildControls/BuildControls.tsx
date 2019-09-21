@@ -1,7 +1,7 @@
 import React from 'react';
 
-import classes from './BuildControls.module.css'
-import BuildControl from './BuildControl/BuildControl'
+import classes from './BuildControls.module.css';
+import BuildControl from './BuildControl/BuildControl';
 
 const controls = [
     {label: 'Salad', type: 'salad'},
@@ -11,7 +11,8 @@ const controls = [
 ];
 
 interface BurgerControlsProps {
-    addIngredient: Function
+    addIngredient: Function,
+    removeIngredient: Function,
 }
 
 const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
@@ -23,6 +24,7 @@ const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
                     label={ctrl.label}
                     type={ctrl.type}
                     addMore={() => props.addIngredient(ctrl.type)}
+                    remove={() => props.removeIngredient(ctrl.type)}
                 />
             )}
         </div>
