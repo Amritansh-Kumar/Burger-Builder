@@ -3,10 +3,15 @@ import React from 'react';
 import classes from './Toolbar.module.css';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
+import DrawerToggle from '../SideDrawer/DrawerToggle/DrawerToggle';
 
-const toolbar: React.FC = (props: any) => (
+interface ToolbarProps {
+    toggleSideDrawer: Function
+}
+
+const toolbar: React.FC<ToolbarProps> = (props: any) => (
     <header className={classes.Toolbar}>
-        <div>MENU</div>
+        <DrawerToggle clicked={props.toggleSideDrawer}/>
         <div className={classes.Logo}>
             <Logo/>
         </div>
