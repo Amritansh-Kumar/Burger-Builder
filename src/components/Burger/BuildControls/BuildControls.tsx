@@ -15,7 +15,8 @@ interface BurgerControlsProps {
     removeIngredient: Function,
     disabledInfo: Object,
     price: Number,
-    purchasable: boolean
+    purchasable: boolean,
+    purchasing: Function
 }
 
 const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
@@ -35,6 +36,7 @@ const buildControls: React.FC<BurgerControlsProps> = (props: any) => {
             <button
                 className={classes.OrderButton}
                 disabled={!props.purchasable}
+                onClick={props.purchasing}
             >
                 ORDER NOW
             </button>
