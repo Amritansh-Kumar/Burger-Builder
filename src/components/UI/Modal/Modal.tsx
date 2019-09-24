@@ -1,3 +1,4 @@
+
 import React, {Component} from 'react';
 
 import classes from './Modal.module.css';
@@ -12,8 +13,8 @@ interface ModalProps {
 class Modal extends Component<ModalProps> {
 
 
-    shouldComponentUpdate(nextProps: Readonly<ModalProps>, nextState: Readonly<{}>, nextContext: any): boolean {
-        return nextProps.show !== this.props.show;
+    shouldComponentUpdate(nextProps: any, nextState: Readonly<{}>, nextContext: any): boolean {
+        return nextProps.show !== this.props.show || nextProps.children!== this.props.children;
     }
 
     render(): React.ReactElement<any, string | React.JSXElementConstructor<any>> {
